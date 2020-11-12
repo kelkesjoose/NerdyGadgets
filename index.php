@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 ?>
+<h1>Test</h1>
 <div class="IndexStyle">
     <div class="col-11">
         <div class="TextPrice">
