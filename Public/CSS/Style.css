@@ -80,7 +80,7 @@ ul#ul-class-navigation li {
     background-color: rgb(35, 35, 47);
     width: 100%;
     height: 200px;
-    z-index: 1;
+    z-index: 1;93
     border-bottom: 1px solid rgb(36, 41, 143);
 }
 #Content {
@@ -472,4 +472,9 @@ ul#ul-class-price li {
     background: rgb(36, 41, 143);
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
+}
+.betaalbutton {
+    width: 20em; height: 2em;
+    font-weight: bold;
+    background-color: darkturquoise;
 }

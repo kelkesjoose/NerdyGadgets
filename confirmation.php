@@ -28,14 +28,34 @@ include "connect.php";
     <meta name="msapplication-TileImage" content="Public/Favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff"></head>
 <body>
-<?php
+
+<h1 align="center" >
+<br><br>
+    <?php
+
 
 if(isset($_GET["submit"])){
-    print("Bedankt voor uw betaling!");
+    print("Bedankt voor uw betaling!<br>");
+    print("<a href='index.php'> <h4>Ga terug naar de hoofdpagina.</h4> </a>");
 } else {
-    print("Er is iets fout gegaan");
+    print("Er is iets fout gegaan :( <br>");
+    print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
 }
+/*
+$Query = " UPDATE Stockitemholdings
+            SET QuantityOnHand - -- aantal van bestelde artikel? Met een variabele??
+            FROM Stockitemholdings
+            WHERE StockItemID = -- hier aangeven welk artikel besteld is, met een variabele??
+            ";
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_execute($Statement);
+$Result = mysqli_stmt_get_result($Statement);
+$Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+*/
+
 ?>
+
+</h1>
 </body>
 </html>
 
