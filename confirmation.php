@@ -1,7 +1,7 @@
 <?php
+include __DIR__ . "/header.php";
 include "CartFunctions.php";
-include "connect.php";
-include "cart.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35,35,47);">
@@ -47,7 +47,6 @@ if(isset($_GET["submit"])){
         $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_execute($Statement);
         $Result = mysqli_stmt_get_result($Statement);
-        $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     }
 } else {
     print("Er is iets fout gegaan :( <br>");
