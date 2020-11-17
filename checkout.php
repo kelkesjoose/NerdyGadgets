@@ -42,8 +42,8 @@ include "connect.php";
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div id="LogoImage"></div>
-<h1> Afrekenen</h1>
+<div id="LogoImage"><a href="./" id="LogoA"></div></a>
+<h2> Afrekenen</h2>
 <br>
 <br>
 <form method="get" action="confirmation.php">

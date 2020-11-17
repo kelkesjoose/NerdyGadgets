@@ -1,7 +1,7 @@
 <?php
-// zonder header?
 include "CartFunctions.php";
 include "connect.php";
+include "cart.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35,35,47);">
@@ -42,11 +42,12 @@ if(isset($_GET["submit"])){
     print("Er is iets fout gegaan :( <br>");
     print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
 }
+/*
 $aantal=0;
     {
-        foreach ($cart as $StockItemID => $aantal) {
+        foreach ($result as $StockItemID => $aantal) {
             $Query = " UPDATE Stockitemholdings
-            SET quantityOnHand - $aantal
+            SET QuantityOnHand - $aantal
             FROM Stockitemholdings
             WHERE StockItemID = $StockItemID";
             $Statement = mysqli_prepare($Connection, $Query);
@@ -55,7 +56,7 @@ $aantal=0;
             $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     }
-print_r(array_values($cart))
+*/
 
 
 ?>
