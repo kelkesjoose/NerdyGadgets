@@ -42,14 +42,17 @@ include "connect.php";
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div id="LogoImage"></div>
-<h1> Afrekenen</h1>
+
+<div class="col-2">
+    <div id="LogoImage"><a href="./" id="LogoA"><img src="public/img/logo250x90.jpg"></a></div></div>
+<div class="checkout">
+<h2> Afrekenen</h2>
 <br>
 <br>
 <form method="get" action="confirmation.php">
     Overzicht bestelling:<br>
     Totaal aantal producten:<br><br> <!-- Hier producten teruglaten komen vanuit de cart? Weet niet hoe? test-->
     Totaal te betalen bedrag:<br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
-    <input type="submit" value="Betalen!" name="submit" class="betaalbutton"><br>
-</form>
+    <input type="submit
+ </div>
 </body>
