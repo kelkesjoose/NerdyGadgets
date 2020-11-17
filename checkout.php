@@ -48,7 +48,7 @@ include "connect.php";
 <br>
 <form method="get" action="confirmation.php">
     Overzicht bestelling:<br>
-    Totaal aantal producten:<br><br> <!-- Hier producten teruglaten komen vanuit de cart? Weet niet hoe?-->
+    Totaal aantal producten:<br><br> <!-- Hier producten teruglaten komen vanuit de cart? Weet niet hoe? test-->
     Totaal te betalen bedrag:<br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
     <input type="submit" value="Betalen!" name="submit" class="betaalbutton"><br>
 </form>
