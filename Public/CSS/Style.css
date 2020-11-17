@@ -478,3 +478,6 @@ ul#ul-class-price li {
     font-weight: bold;
     background-color: darkturquoise;
 }
+.checkout {
+    padding-left: 50px;
+}

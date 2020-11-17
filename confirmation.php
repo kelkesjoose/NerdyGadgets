@@ -32,6 +32,7 @@ include "cart.php";
 
 <h1 align="center" >
 <br><br>
+
     <?php
 
 
@@ -42,10 +43,11 @@ if(isset($_GET["submit"])){
     print("Er is iets fout gegaan :( <br>");
     print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
 }
-/*
+
 $aantal=0;
+$cart = GetCart();
     {
-        foreach ($result as $StockItemID => $aantal) {
+        foreach ($cart as $StockItemID => $aantal) {
             $Query = " UPDATE Stockitemholdings
             SET QuantityOnHand - $aantal
             FROM Stockitemholdings
@@ -56,8 +58,6 @@ $aantal=0;
             $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     }
-*/
-
 
 ?>
 
