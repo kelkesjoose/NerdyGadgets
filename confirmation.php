@@ -48,6 +48,7 @@ if(isset($_GET["submit"])){
         mysqli_stmt_execute($Statement);
         $Result = mysqli_stmt_get_result($Statement);
     }
+    session_destroy();
 } else {
     print("Er is iets fout gegaan :( <br>");
     print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
