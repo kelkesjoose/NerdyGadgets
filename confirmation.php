@@ -1,6 +1,6 @@
 <?php
 // zonder header?
-include "connect.php";
+include __DIR__ . "/header.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35,35,47);">
@@ -42,17 +42,19 @@ if(isset($_GET["submit"])){
     print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
 }
 /*
-$Query = " UPDATE Stockitemholdings
-            SET QuantityOnHand - -- aantal van bestelde artikel? Met een variabele??
+function updatenVoorraad($StockItemId,$QuantityOnHand)
+{
+    $Query = " UPDATE Stockitemholdings
+            SET $QuantityOnHand- -- aantal van bestelde artikel? Met een variabele??
             FROM Stockitemholdings
-            WHERE StockItemID = -- hier aangeven welk artikel besteld is, met een variabele??
+            WHERE StockItemID = $StockItemId -- hier aangeven welk artikel besteld is, met een variabele??
             ";
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_execute($Statement);
-$Result = mysqli_stmt_get_result($Statement);
-$Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+}
 */
-
 ?>
 
 </h1>
