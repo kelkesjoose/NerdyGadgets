@@ -473,3 +473,11 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+.betaalbutton {
+    width: 20em; height: 2em;
+    font-weight: bold;
+    background-color: darkturquoise;
+}
+.checkout {
+    padding-left: 50px;
+}

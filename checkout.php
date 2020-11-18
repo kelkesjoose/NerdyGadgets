@@ -1,6 +1,6 @@
 <?php
-// zonder header?
-include "connect.php";
+include __DIR__ . "/header.php";
+include "CartFunctions.php";
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +42,14 @@ include "connect.php";
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div id="LogoImage"></div>
-<h2> Afrekenen</h2>
+<div class="checkout">
+    <h1 align="center" > Afrekenen </h1>
 <br>
 <br>
-<form method="get" action="confirmation.php">
-    <!-- overzicht artikelen? -->
-    Totaal aantal producten:<br><br> <!-- Hier producten teruglaten komen vanuit de cart? Weet niet hoe?-->
-    Totaal te betalen bedrag:<br><br><br><br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
-    <input type="submit" value="Betalen!" name="submit"><br>
-</form>
+<h3>
+<form method="get" action="confirmation.php" align="center">
+    Totaal te betalen bedrag: <br> <br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
+    <input type="submit" value="Betalen!" name="submit" class="betaalbutton"><br>
+</form></h3>
+</div>
 </body>

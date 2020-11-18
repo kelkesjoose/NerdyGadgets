@@ -2,7 +2,7 @@
 
 function GetCart()
 {
-    if (isset($_SESSION["cart"])) {//controleren of winkelmandje al bestaat
+    if (isset($_SESSION["cart"])) {
         $cart = $_SESSION["cart"];
     } else {
         $cart = array();
@@ -13,7 +13,7 @@ function GetCart()
 function AddProductToCart($stockItemID)
 {
     $cart = GetCart();
-    if (array_key_exists($stockItemID, $cart)) { //controleren of product al in winkelmandje voorkomt
+    if (array_key_exists($stockItemID, $cart)) {
         $cart[$stockItemID] += 1;
     } else {
         $cart[$stockItemID] = 1;
