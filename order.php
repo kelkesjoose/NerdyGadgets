@@ -2,16 +2,18 @@
 include "CartFunctions.php";
 include "header.php";
 
-if (empty($cart)) {
+
+
+if (empty($_SESSION["cart"])) {
   print ("Het winkelwagentje is leeg!");
 }
 
 else {
-
-  print($cart);
+  print_r($_SESSION["cart"]);
   print('<body>
     <h2>Bestelgegevens</h2>
     <br>
+    <h3>Alle velden zijn verplicht!</h3><br>
     <form method="get" action="ordercontrol.php">
       <h3>Bezorggegevens</h3><br>
       <h5>Naam</h5>
@@ -31,4 +33,6 @@ else {
       <label for="male">Bankoverschrijving</label><br>
       <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br>');
 }
+
+
 ?>
