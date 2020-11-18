@@ -73,6 +73,9 @@ include "connect.php";
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
+                <li>
+                    <a href="cart.php" class="HrefDecoration">winkelwagen</a>
+                </li>
             </ul>
         </div>
         <ul id="ul-class-navigation">
