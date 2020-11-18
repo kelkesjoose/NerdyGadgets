@@ -2,11 +2,11 @@
 include "CartFunctions.php";
 include "header.php";
 
-// if (empty($cart)) {
-//   print ("Het winkelwagentje is leeg!");
-// }
-//
-// else {
+if (empty($cart)) {
+  print ("Het winkelwagentje is leeg!");
+}
+
+else {
 
   print($cart);
   print('<body>
@@ -30,5 +30,5 @@ include "header.php";
       <input type="radio" id="overschr" name="betwijze" value="overschr">
       <label for="male">Bankoverschrijving</label><br>
       <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br>');
-// }
+}
 ?>
