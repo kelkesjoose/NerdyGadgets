@@ -1,6 +1,6 @@
 <?php
-include "connect.php";
-
+include __DIR__ . "/header.php";
+include "CartFunctions.php";
 ?>
 
 <!DOCTYPE html>
@@ -42,18 +42,14 @@ include "connect.php";
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-
-<div class="col-2">
-    <div id="LogoImage"><a href="./" id="LogoA"><img src="public/img/logo250x90.jpg"></a></div></div>
 <div class="checkout">
-
-</div><h2> Afrekenen</h2>
+    <h1 align="center" > Afrekenen </h1>
 <br>
 <br>
-<form method="get" action="confirmation.php">
-    Overzicht bestelling:<br>
-    Totaal aantal producten:<br><br> <!-- Hier producten teruglaten komen vanuit de cart? Weet niet hoe? test-->
-    Totaal te betalen bedrag:<br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
+<h3>
+<form method="get" action="confirmation.php" align="center">
+    Totaal te betalen bedrag: <br> <br><br> <!-- Hier bedragen terug laten komen vanuit de cart? Weet niet hoe?-->
     <input type="submit" value="Betalen!" name="submit" class="betaalbutton"><br>
-</form>
+</form></h3>
+</div>
 </body>
