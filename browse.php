@@ -1,5 +1,8 @@
 <?php
 include __DIR__ . "/header.php";
+include "CartFunctions.php";
+
+
 $SearchString = "";
 $ReturnableResult = null;
 if (isset($_GET['search_string'])) {
@@ -158,6 +161,19 @@ $amount = $Result[0];
 if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);
 }
+
+if(isset($_POST["id"])) {
+    $stockItemID = $_POST["id"];
+}else{
+    $stockItemID = 0;
+}
+
+if(isset($_POST["submit"])){
+    $stockItemID = $_POST["id"];
+    AddProductToCart($stockItemID);
+    print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
+}
+
 ?>
 <div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
     <form>
@@ -234,7 +250,13 @@ if (isset($amount)) {
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?></h4>
                 </div>
-            </a>
+                <div>
+                <form method="post">
+                    <input type="number" name="id" value="<?php print $row["StockItemID"]?>" hidden >
+                    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+                </form>
+                </div>
+                </a>
         <?php } ?>
 
         <form id="PageSelector">
