@@ -22,12 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c2f448c-69e7-476c-a52e-3ebc090199b7" name="Default Changelist" comment="Aangemaakt">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="8c2f448c-69e7-476c-a52e-3ebc090199b7" name="Default Changelist" comment="Checkout aangepast">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2020_08_30__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2020_08_30__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2020_15_11__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2020_15_11__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/CSS/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/CSS/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -86,7 +85,10 @@
       <workItem from="1605260354022" duration="2757000" />
       <workItem from="1605547519225" duration="5611000" />
       <workItem from="1605627165396" duration="1245000" />
-      <workItem from="1605703421223" duration="2745000" />
+      <workItem from="1605703421223" duration="7525000" />
+      <workItem from="1605779281613" duration="2962000" />
+      <workItem from="1605783774985" duration="148000" />
+      <workItem from="1605784096810" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="toiuehtroei">
       <created>1605190010798</created>
@@ -116,7 +118,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605252729661</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Checkout aangepast">
+      <created>1605720513277</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605720513277</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Checkout aangepast">
+      <created>1605720520998</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605720520998</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +154,8 @@
     <MESSAGE value="toiuehtroei" />
     <MESSAGE value="Aangemaakt" />
     <MESSAGE value="hoi" />
-    <option name="LAST_COMMIT_MESSAGE" value="hoi" />
+    <MESSAGE value="Checkout aangepast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checkout aangepast" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1211" y="342" key="#Notifications" timestamp="1605190260885">
@@ -198,11 +215,11 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1605624343769" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605252736106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605720899216">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1605190177067" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605252736106" />
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1605720899216" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605720530362" />
     <state x="-1143" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605190253153">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
