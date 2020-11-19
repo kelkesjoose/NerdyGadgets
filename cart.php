@@ -13,7 +13,6 @@ $btwWaarde = 0;
 <div class="container">
     <div class="row">
         <div class="col-6 cart">
-
             <?php
             if (isset($_SESSION["cart"])) {
                 print '<table class="table table-dark" style="text-align: center"><tr>
@@ -47,7 +46,7 @@ $btwWaarde = 0;
                     print round(($R[0]["SellPrice"]), 2) * $aantal;
                     print '</td>';
                     echo "<td style='text-align: left'><form method='post' action='cart.php'>
-                            <button onclick='return confirm(`Weet je het zeker dat je dit product wilt verwijderen?`)' type='submit' name='verwijder" . $productnummer . "' class='btn btn-danger actionBtn'><i class='far fa-trash-alt'></i></button>
+                            <button onclick='window.location.reload()' type='submit' name='verwijder" . $productnummer . "' class='btn btn-danger actionBtn'><i class='far fa-trash-alt'></i></button>
                       </form></td></tr>";
                     if (isset($_POST["verwijder$productnummer"])) {
                         unset($_SESSION["cart"][$productnummer]);
@@ -59,7 +58,7 @@ $btwWaarde = 0;
                 }
                 $subtotalen = '';
 
-                $subtotalen .= "<tr><td></td><td></td><td></td><td><p class='subtotalen'>Subtotaal: €" . round(($subtotaal), 2) . "</p><br>";
+                $subtotalen .= "<tr><td><p class='subtotalen'>Subtotaal: €" . round(($subtotaal), 2) . "</p>";
                 $subtotalen .= "<p class='subtotalen'>BTW: €" . round(($btwWaarde), 2) . "</p>";
                 $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
@@ -68,7 +67,7 @@ $btwWaarde = 0;
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
 
-                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='order.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
 
 
             } else {

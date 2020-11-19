@@ -13,11 +13,6 @@ if(isset($_GET["id"])) {
 ?>
 <h3>Product <?php print($stockItemID)?></h3>
 
-<form method="post">
-    <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
-    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
-</form>
-
 <?php
 if(isset($_POST["submit"])){
     $stockItemID = $_POST["id"];
@@ -78,8 +73,6 @@ if ($R) {
             </div>
         <?php }
         ?>
-
-
         <div id="ArticleHeader">
             <?php
             if (isset($Images)) {
@@ -188,6 +181,10 @@ if ($R) {
             }
             ?>
         </div>
+        <form method="post">
+            <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
+            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+        </form>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
