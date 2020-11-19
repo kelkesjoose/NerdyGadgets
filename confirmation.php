@@ -1,7 +1,7 @@
 <?php
+include __DIR__ . "/header.php";
 include "CartFunctions.php";
-include "connect.php";
-include "cart.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35,35,47);">
@@ -34,30 +34,26 @@ include "cart.php";
 <br><br>
 
     <?php
-
+    $aantal=0;
+    $cart = GetCart();
 
 if(isset($_GET["submit"])){
     print("Bedankt voor uw betaling!<br>");
     print("<a href='index.php'> <h4>Ga terug naar de hoofdpagina.</h4> </a>");
+    foreach ($cart as $StockItemID => $aantal) {
+        $Query = " UPDATE Stockitemholdings
+            SET QuantityOnHand = QuantityOnHand - $aantal
+            WHERE StockItemID = $StockItemID";
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_execute($Statement);
+        $Result = mysqli_stmt_get_result($Statement);
+    }
+    session_destroy();
 } else {
     print("Er is iets fout gegaan :( <br>");
     print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
 }
 
-$aantal=0;
-$cart = GetCart();
-    {
-        foreach ($cart as $StockItemID => $aantal) {
-            $Query = " UPDATE Stockitemholdings
-            SET QuantityOnHand - $aantal
-            FROM Stockitemholdings
-            WHERE StockItemID = $StockItemID";
-            $Statement = mysqli_prepare($Connection, $Query);
-            mysqli_stmt_execute($Statement);
-            $Result = mysqli_stmt_get_result($Statement);
-            $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-        }
-    }
 
 ?>
 
