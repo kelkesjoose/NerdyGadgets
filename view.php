@@ -181,6 +181,12 @@ if ($R) {
             }
             ?>
         </div>
+
+        <!-- Review Sectie -->
+        <div id="StockItemReviews">
+        
+        </div>
+
         <form method="post">
             <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
             <input type="submit" name="submit" value="Voeg toe aan winkelmandje">

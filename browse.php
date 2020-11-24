@@ -301,5 +301,3 @@ if(isset($_POST["submit"])){
 <?php
 include __DIR__ . "/footer.php";
 ?>
-
-<!-- Porky Test PorkChamp -->
