@@ -74,7 +74,7 @@ include "connect.php";
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
                 <li>
-                    <a href="cart.php" class="HrefDecoration">winkelwagen</a>
+                    <a href="cart.php" class="HrefDecoration">Winkelwagen</a>
                 </li>
             </ul>
         </div>

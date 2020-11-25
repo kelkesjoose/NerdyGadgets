@@ -495,10 +495,13 @@ ul#ul-class-price li {
     box-sizing: content-box;
 }
 
-.verzendkosten {
+.verzendkostenfooter {
     text-align: center;
 }
 .thuiswaarborg {
     width: 125px;
     float: right;
+}
+.verzendkostenheader {
+    text-align: center;
 }
