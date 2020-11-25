@@ -525,7 +525,7 @@ ul#ul-class-price li {
     position: relative;
     display: block;
     font-size: 50px;
-    color: #101010;
+    color: #666699;
 }
 .rating label:after {
     content:'\f005';
