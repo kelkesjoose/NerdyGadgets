@@ -57,6 +57,13 @@ else {
     <h3>Alle velden zijn verplicht!</h3><br>
     <form method="get" action="ordercontrol.php">
       <h3>Bezorggegevens</h3><br>
+      <h5>Bezorging</h5>
+        <h6>Waar wilt u het bezorgd hebben?</h6>
+          Thuis <input type="radio" id="thuis" name="bezwijze" value="Thuis">
+          Afhaalpunt <input type="radio" id="afhpunt" name="bezwijze" value="afhpunt">
+        <h6>Op welke dag wil u het bezorgd hebben?</h6>
+          Zelfde dag <input type="radio" id="vandaag" name="tijd" value="vandaag">
+          Morgen <input type="radio" id="morgen" name="tijd" value="morgen">
       <h5>Naam</h5>
         Voornaam: <input type="text" id="fname" name="fname"><br>
         Achternaam: <input type="text" id="lname" name="lname"><br><br><br><br>
@@ -66,12 +73,9 @@ else {
       e-mail: <input type="text" id="email" name="email"><br><br><br><br><br>
 
       <h3>Betaalwijze</h3>
-      <input type="radio" id="ideal" name="betwijze" value="ideal">
-      <label for="male">Ideal</label><br>
-      <input type="radio" id="cc" name="betwijze" value="cc">
-      <label for="female">Creditcard</label><br>
-      <input type="radio" id="overschr" name="betwijze" value="overschr">
-      <label for="male">Bankoverschrijving</label><br>
+      Ideal <input type="radio" id="ideal" name="betwijze" value="ideal">
+      Creditcard <input type="radio" id="cc" name="betwijze" value="cc">
+      Overschrijving <input type="radio" id="overschr" name="betwijze" value="overschr">
       <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br>');
 }
 
