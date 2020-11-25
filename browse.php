@@ -219,6 +219,7 @@ if(isset($_POST["submit"])){
                 } ?>>Naam aflopend
                 </option>
             </select>
+            <h5 class="FilterTopMargin">De verzendkosten zijn vanaf € 25.00 gratis!</h5>
     </form>
 </div>
 </div>
