@@ -30,17 +30,14 @@ else {
       $R = mysqli_stmt_get_result($Statement);
       $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
-      print '<td style="text-align: left">';
       print ($R[0]["StockItemName"]);
-      print '</td>';
-      print '<td>';
-      print "$aantal";
-      print '</td>';
-      print '<td>';
+      print ' | Aantal:';
+      print " $aantal";
+      print ' | Prijs: €';
       print round(($R[0]["SellPrice"]), 2) * $aantal;
-      print '</td>';
       print '<br>';
-      echo "<td style='text-align: left'></td></tr>";
+
+
 
       $totaalPrijs = $totaalPrijs + (($R[0]["SellPrice"]) * $aantal);
       $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
