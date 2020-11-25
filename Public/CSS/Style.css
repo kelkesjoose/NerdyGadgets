@@ -481,6 +481,20 @@ ul#ul-class-price li {
 .checkout {
     padding-left: 50px;
 }
+
+.ToelichtingReview {
+    resize:none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.TextVeldReview{
+    width: 20em; height: 2em;
+}
+
+.PaddingToelichtingReview {
+    box-sizing: content-box;
+}
+
 .verzendkosten {
     text-align: center;
 }
