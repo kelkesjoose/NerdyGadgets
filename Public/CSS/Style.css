@@ -550,7 +550,7 @@ ul#ul-class-price li {
 }
 
 .bestelbutton {
-  width: 20em; height: 2em;
+  width: 40em; height: 2em;
   font-weight: bold;
   background-color: darkturquoise;
   padding-left: 50px;
@@ -559,4 +559,22 @@ ul#ul-class-price li {
 .order {
   padding-left: 50px;
   padding-right: : 50px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.order input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.order input[type=radio] {
+  height: 20px;
+  width: 20px;
+}
+
+.besthead {
+    border-bottom: 2px solid darkturquoise;
 }
