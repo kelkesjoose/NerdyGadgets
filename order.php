@@ -59,7 +59,7 @@ else {
   <div class="order">
     <br>
     <div class="besthead">
-    <h3>Alle velden zijn verplicht!</h3><br>
+    <h3>Alle velden zijn verplicht!</h3>
     </div><br>
     <form method="get" action="ordercontrol.php">
       <h3>Bezorggegevens</h3><br>
