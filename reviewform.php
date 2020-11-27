@@ -7,8 +7,7 @@ include __DIR__ . "/header.php";
 <head>
     <meta charset="UTF-8">
     <title> Review pagina </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css
-    /font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
