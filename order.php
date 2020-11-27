@@ -51,8 +51,12 @@ else {
   $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
   print $subtotalen;
+  ?>
+  <div class="order">
+    <?php
   print('</h5>');
-  print('<body>
+  print('
+  <div class="order">
     <br>
     <h3>Alle velden zijn verplicht!</h3><br>
     <form method="get" action="ordercontrol.php">
@@ -76,8 +80,9 @@ else {
       Ideal <input type="radio" id="ideal" name="betwijze" value="ideal">
       Creditcard <input type="radio" id="cc" name="betwijze" value="cc">
       Overschrijving <input type="radio" id="overschr" name="betwijze" value="overschr">
-      <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br>');
+      <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br></div>');
 }
 
 
 ?>
+</div>

@@ -548,3 +548,15 @@ ul#ul-class-price li {
 .verzendkostenheader {
     text-align: center;
 }
+
+.bestelbutton {
+  width: 20em; height: 2em;
+  font-weight: bold;
+  background-color: darkturquoise;
+  padding-left: 50px;
+}
+
+.order {
+  padding-left: 50px;
+  padding-right: : 50px;
+}
