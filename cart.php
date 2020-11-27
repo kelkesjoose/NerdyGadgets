@@ -58,8 +58,7 @@ $btwWaarde = 0;
                 }
                 $subtotalen = '';
 
-                $subtotalen .= "<tr><td><p class='subtotalen'>Subtotaal: €" . round(($subtotaal), 2) . "</p>";
-                $subtotalen .= "<p class='subtotalen'>BTW: €" . round(($btwWaarde), 2) . "</p>";
+                $subtotalen .= "<tr><td>";
                 $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
                 print $subtotalen;

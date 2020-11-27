@@ -13,6 +13,11 @@ if(isset($_GET["id"])) {
 ?>
 <h3>Product <?php print($stockItemID)?></h3>
 
+<form method="post">
+    <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
+    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+</form>
+
 <?php
 if(isset($_POST["submit"])){
     $stockItemID = $_POST["id"];
@@ -21,10 +26,10 @@ if(isset($_POST["submit"])){
 }
 
 $Query = " 
-           SELECT SI.StockItemID, 
+           SELECT SI.StockItemID,
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
-            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
+            (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
@@ -37,7 +42,7 @@ $Query = "
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_bind_param($Statement, "ii",$ShowStockLevel, $_GET['id']);
 mysqli_stmt_execute($Statement);
 $ReturnableResult = mysqli_stmt_get_result($Statement);
 if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
@@ -73,6 +78,8 @@ if ($R) {
             </div>
         <?php }
         ?>
+
+
         <div id="ArticleHeader">
             <?php
             if (isset($Images)) {
@@ -181,16 +188,6 @@ if ($R) {
             }
             ?>
         </div>
-
-        <!-- Review Sectie -->
-        <div id="StockItemReviews">
-        
-        </div>
-
-        <form method="post">
-            <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
-            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
-        </form>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
