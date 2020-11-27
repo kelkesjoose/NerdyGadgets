@@ -13,13 +13,12 @@ include __DIR__ . "/header.php";
 
 <body>
 <h1>Plaats review:</h1>
-<form method="get" action="reviewform.php">
-Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
-    <div class="PaddingToelichtingReview">
-Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" class="ToelichtingReview"> </textarea>
-    </div>
-<input type="submit" value="Verstuur" name="Verstuur!" class="betaalbutton">
+
 </form>
+<br>
+<form method="get" action="reviewform.php">
+    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
+
     <div class="rating">
         <input type="radio" name="star" id="star1"><label for="star1">
         </label>
@@ -32,8 +31,12 @@ Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichtin
         <input type="radio" name="star" id="star5"><label for="star5">
         </label>
     </div>
+<br>
+<br>
+<br>
 
-
-
-
+    <div class="PaddingToelichtingReview">
+        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" class="ToelichtingReview"> </textarea>
+    </div>
+    <input type="submit" value="Verstuur" name="Verstuur!" class="betaalbutton">
 </body>
