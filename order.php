@@ -51,33 +51,44 @@ else {
   $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
   print $subtotalen;
+  ?>
+  <div class="order">
+    <?php
   print('</h5>');
-  print('<body>
+  print('
+  <div class="order">
     <br>
-    <h3>Alle velden zijn verplicht!</h3><br>
+    <div class="besthead">
+    <h3>Alle velden zijn verplicht!</h3>
+    </div><br>
     <form method="get" action="ordercontrol.php">
       <h3>Bezorggegevens</h3><br>
       <h5>Bezorging</h5>
         <h6>Waar wilt u het bezorgd hebben?</h6>
-          Thuis <input type="radio" id="thuis" name="bezwijze" value="Thuis">
-          Afhaalpunt <input type="radio" id="afhpunt" name="bezwijze" value="afhpunt">
+        <div class="bezorg">
+          Thuis <input type="radio" id="thuis" name="bezwijze" value="Thuis"><br>
+          Afhaalpunt <input type="radio" id="afhpunt" name="bezwijze" value="afhpunt"><br><br>
         <h6>Op welke dag wil u het bezorgd hebben?</h6>
-          Zelfde dag <input type="radio" id="vandaag" name="tijd" value="vandaag">
-          Morgen <input type="radio" id="morgen" name="tijd" value="morgen">
+          Zelfde dag <input type="radio" id="vandaag" name="tijd" value="vandaag"><br>
+          Morgen <input type="radio" id="morgen" name="tijd" value="morgen"><br><br><br>
+        </div>
       <h5>Naam</h5>
         Voornaam: <input type="text" id="fname" name="fname"><br>
         Achternaam: <input type="text" id="lname" name="lname"><br><br><br><br>
       <h5>Adresgegevens</h5>
         Postcode: <input type="text" id="pcode" name="pcode"><br>
         Huisnummer: <input type="text" id="huisnr" name="huisnr"><br><br><br><br>
-      e-mail: <input type="text" id="email" name="email"><br><br><br><br><br>
+      e-mail: <input type="text" id="email" name="email"><br><br><br><br>
 
       <h3>Betaalwijze</h3>
-      Ideal <input type="radio" id="ideal" name="betwijze" value="ideal">
-      Creditcard <input type="radio" id="cc" name="betwijze" value="cc">
-      Overschrijving <input type="radio" id="overschr" name="betwijze" value="overschr">
-      <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br>');
+      <div class="betgeg">
+      Ideal <input type="radio" id="ideal" name="betwijze" value="ideal"><br>
+      Creditcard <input type="radio" id="cc" name="betwijze" value="cc"><br>
+      Overschrijving <input type="radio" id="overschr" name="betwijze" value="overschr"><br><br>
+      <input type="submit" value="Naar betaalpagina" name="submit" class="bestelbutton"><br></div></div>');
+
 }
 
 
 ?>
+</div>
