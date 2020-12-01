@@ -579,7 +579,7 @@ ul#ul-class-price li {
     border-bottom: 2px solid darkturquoise;
 }
 
-.slider {
+/* .slider {
     width: 60%;
     margin: 24% auto;
     position: relative;
@@ -639,8 +639,8 @@ ul#ul-class-price li {
 #SelectValue::after{
     content: '';
     border-top: 17px solid #ffd200;
-    border-left: 24px solid /* rgb(35, 35, 47); */ ;
-    border-right: 24px solid /* rgb(35, 35, 47); */ ;
+    border-left: 24px solid rgb(35, 35, 47);
+    border-right: 24px solid rgb(35, 35, 47) ;
     position: absolute;
     bottom: -14px;
     left: 0;
@@ -654,4 +654,10 @@ ul#ul-class-price li {
     position: absolute;
     top: 0;
     left: 0;
+} */
+
+.slider {
+    width: 60%;
+    margin: 24% auto;
+    position: relative;
 }

@@ -29,7 +29,6 @@ print $ReviewDatum;
     <meta charset="UTF-8">
     <title> Review pagina </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
 </head>
 
 <?php
