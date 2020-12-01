@@ -29,6 +29,7 @@ print $ReviewDatum;
     <meta charset="UTF-8">
     <title> Review pagina </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
 </head>
 
 <?php
@@ -59,11 +60,11 @@ $Query = "
 INSERT INTO reviewproduct
 VALUES (?, ?, ?, ?, ?)";
 
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "issis", $ReviewID, $_POST[OnderwerpReview],$_POST[ToelichtingReview],$star,$ReviewDatum);
-mysqli_stmt_execute($Statement);
-$R = mysqli_stmt_get_result($Statement);
-?>
+// $Statement = mysqli_prepare($Connection, $Query);
+// mysqli_stmt_bind_param($Statement, "issis", $ReviewID, $_POST[OnderwerpReview],$_POST[ToelichtingReview],$star,$ReviewDatum);
+// mysqli_stmt_execute($Statement);
+// $R = mysqli_stmt_get_result($Statement);
+// ?>
 
 <body>
 <h1>Plaats review:</h1>
@@ -84,7 +85,31 @@ Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichtin
         <input type="radio" name="star5" id="star5"><label for="star5">
         </label>
     </div> -->
-    <input type="range" min="1" max="5" id="star" name="star" value >
+    
+    <div class="slider">
+        <input type="range" min="1" max="5" id="star" name="star" value="3">
+        <div id="Selector">
+            <div class="SelectBtn"></div>
+            <div id="SelectValue"></div>
+        </div>
+        <div id="ProgressBar"></div>
+    </div>
+
+    <script>
+        var slider = document.getElementById("star");
+        var selector = document.getElementById("selector");
+        var SelectValue = document.getElementById("SelectValue");
+        var ProgressBar = document.getElementById("ProgressBar");
+
+        SelectValue.innerHTML = slider.value;
+
+        slider.oninput = function(){
+            SelectValue.innerHTML = this.value;
+            selector.style.left = this.value + "%";
+            ProgressBar.style.width = this.value + "%";
+        }
+    </script>
+
 <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
 </form>
 
