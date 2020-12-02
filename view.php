@@ -188,8 +188,73 @@ if ($R) {
             }
             ?>
         </div>
+        <div>
+            <div class="col-sm-12">
+                <h1>Plaats review:</h1>
+                <form method="post" action="reviewform.php">
+                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
+                    <div class="paddingstar">
+                        <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    </div>
+                    <div class="colorslider"></div>
+                    <div class="slider">
+                        <input type="range" min="1" max="5" name="star" >
+                    </div>
+                    <div class="PaddingToelichtingReview">
+                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview"> </textarea>
+                    </div>
+                    <?php
+                    print_r($_POST); ?>
+                    <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
+                </form>
+            </div>
+        </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+<br>
+<?php
+$date = getdate();
+$ReviewID = "";
+$ToelichtingReview = "";
+
+foreach ($date as $time => $rv) {
+if ($time == "mday") {
+$day = $date["mday"];
+}
+if ($time == "mon") {
+$month = $date["mon"];
+}
+if ($time == "year") {
+$year = $date["year"];
+break;
+}
+}
+
+$ReviewDatum = "$year-$month-$day";
+print($ReviewDatum);
+
+
+
+
+?>
+
+<?php
+$Query = "
+INSERT INTO reviewproduct
+VALUES (?, ?, ?, ?, ?)";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_bind_param($Statement, "issis", $ReviewID, $_POST['OnderwerpReview'],$_POST['ToelichtingReview'],$_POST['Star'],$ReviewDatum);
+mysqli_stmt_execute($Statement);
+$R = mysqli_stmt_get_result($Statement);
+?>
+<br>
+
+

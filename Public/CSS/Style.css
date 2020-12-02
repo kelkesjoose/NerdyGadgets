@@ -482,6 +482,11 @@ ul#ul-class-price li {
     padding-left: 50px;
 }
 
+.Review{
+    text-align: center;
+}
+
+
 .ToelichtingReview {
     resize:none;
     padding-left: 20px;
@@ -511,7 +516,7 @@ ul#ul-class-price li {
     display: flex;
 }
 .rating input{
-   display: none;
+   display: contents;
 }
 
 .rating label{
@@ -552,13 +557,13 @@ ul#ul-class-price li {
 .bestelbutton {
   width: 40em; height: 2em;
   font-weight: bold;
-  background-color: darkturquoise;
+  background-color: #00ced1;
   padding-left: 50px;
 }
 
 .order {
   padding-left: 50px;
-  padding-right: : 50px;
+  padding-right: 50px;
   text-align: center;
   padding-bottom: 30px;
 }
@@ -579,6 +584,7 @@ ul#ul-class-price li {
     border-bottom: 2px solid darkturquoise;
 }
 
+<<<<<<< HEAD
 /* .slider {
     width: 60%;
     margin: 24% auto;
@@ -611,18 +617,17 @@ ul#ul-class-price li {
     transform: translateX(-50%);
     z-index: 2;
 }
+=======
+.slider {
+    width: 20%;
+    position: relative;}
+>>>>>>> 2eaea05ed9f3c44536455075a72147050fd4c7c1
 
-.SelectBtn {
-    height: 48px;
-    width: 48px;
-    background-image: url(star.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
+.colorslider{
+    fill:#676EFF;
 }
 
+<<<<<<< HEAD
 #SelectValue {
     width: 48px;
     height: 40px;
@@ -661,3 +666,11 @@ ul#ul-class-price li {
     margin: 24% auto;
     position: relative;
 }
+=======
+#paddingstar {
+    margin-right: 10px;
+    width: 40px; height: 40px;
+    box-sizing: border-box;
+    filter:
+}
+>>>>>>> 2eaea05ed9f3c44536455075a72147050fd4c7c1
