@@ -205,10 +205,11 @@ if ($R) {
                         <input type="range" min="1" max="5" name="star" >
                     </div>
                     <div class="PaddingToelichtingReview">
-                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" required> </textarea>
+                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" > </textarea>
                     </div>
                     <?php
                     print_r($_POST); ?>
+                    <input type="hidden" id="id" name="id" value=<?php print $stockItemID; ?>>
                     <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
                 </form>
             </div>
@@ -219,42 +220,7 @@ if ($R) {
     } ?>
 </div>
 <br>
-<?php
-$date = getdate();
-$ReviewID = "";
-$ToelichtingReview = "";
-
-foreach ($date as $time => $rv) {
-if ($time == "mday") {
-$day = $date["mday"];
-}
-if ($time == "mon") {
-$month = $date["mon"];
-}
-if ($time == "year") {
-$year = $date["year"];
-break;
-}
-}
-
-$ReviewDatum = "$year-$month-$day";
-print($ReviewDatum);
-
-
-
-
-?>
 
 <?php
-$Query = "
-INSERT INTO reviewproduct
-VALUES (?, ?, ?, ?, ?)";
-
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "issis", $ReviewID, $_POST['OnderwerpReview'],$_POST['ToelichtingReview'],$_POST['Star'],$ReviewDatum);
-mysqli_stmt_execute($Statement);
-$R = mysqli_stmt_get_result($Statement);
+$Query = "SELECT * FROM reviewproduct WHERE stockItemID = $stockItemID"
 ?>
-<br>
-
-
