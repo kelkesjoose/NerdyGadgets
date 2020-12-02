@@ -192,7 +192,7 @@ if ($R) {
             <div class="col-sm-12">
                 <h1>Plaats review:</h1>
                 <form method="post" action="reviewform.php">
-                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
+                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" required> <br><br>
                     <div class="paddingstar">
                         <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
                     <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
@@ -205,7 +205,7 @@ if ($R) {
                         <input type="range" min="1" max="5" name="star" >
                     </div>
                     <div class="PaddingToelichtingReview">
-                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview"> </textarea>
+                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" required> </textarea>
                     </div>
                     <?php
                     print_r($_POST); ?>
