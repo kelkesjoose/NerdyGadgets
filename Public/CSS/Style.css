@@ -474,9 +474,10 @@ ul#ul-class-price li {
     color: #fff;
 }
 .betaalbutton {
-    width: 20em; height: 2em;
+    width: 120px; height: 40px;
     font-weight: bold;
     background-color: darkturquoise;
+    font-size: 20px;
 }
 .checkout {
     padding-left: 50px;
@@ -485,7 +486,9 @@ ul#ul-class-price li {
 .Review{
     text-align: center;
 }
-
+.postreview{
+    border-bottom: 2px solid darkturquoise;
+}
 
 .ToelichtingReview {
     resize:none;
@@ -555,21 +558,21 @@ ul#ul-class-price li {
 }
 
 .bestelbutton {
-  width: 40em; height: 2em;
+  width: 15em; height: 2em;
   font-weight: bold;
-  background-color: #00ced1;
-  padding-left: 50px;
+    background-color: #00ced1;
 }
 
 .order {
-  padding-left: 50px;
+  /*padding-left: 70px; */
   padding-right: 50px;
-  text-align: center;
+  /* text-align: center;*/
   padding-bottom: 30px;
 }
 
 .order input[type=text] {
-  width: 100%;
+  width: 200px;
+    height: 30px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -578,6 +581,14 @@ ul#ul-class-price li {
 .order input[type=radio] {
   height: 20px;
   width: 20px;
+}
+
+.Afrekenen{
+ text-align: center;
+}
+
+.slider {
+    width: 220px;
 }
 
 .besthead {
@@ -659,18 +670,19 @@ ul#ul-class-price li {
     position: absolute;
     top: 0;
     left: 0;
-} */
+}
 
-.slider {
-    width: 60%;
-    margin: 24% auto;
-    position: relative;
-}
+
+
+ */
 =======
-#paddingstar {
-    margin-right: 10px;
-    width: 40px; height: 40px;
-    box-sizing: border-box;
-    filter:
-}
 >>>>>>> 2eaea05ed9f3c44536455075a72147050fd4c7c1
+
+         #paddingstar {
+             margin-right: 10px;
+             width: 40px;
+             height: 40px;
+             box-sizing: border-box;
+             filter:
+         }
+
