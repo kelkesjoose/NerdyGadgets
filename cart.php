@@ -62,7 +62,7 @@ $btwWaarde = 0;
 
 
                 print $subtotalen;
-                if ($totaalPrijs > 25.00){
+                if ($totaalPrijs >= 25.00){
                     print"De verzendkosten zijn gratis";
                     print"<td>";
                     print"<td>";

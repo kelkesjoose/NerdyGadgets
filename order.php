@@ -47,9 +47,11 @@ else {
   print '<br>';
   $subtotalen = '';
 
-
-  $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
-
+  if ($totaalPrijs >= 25.00) {
+      $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
+  } else {
+      $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs + 4.95), 2) . "</p></td></tr>";
+  }
   print $subtotalen;
   ?>
   <div class="order">
