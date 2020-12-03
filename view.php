@@ -11,13 +11,13 @@ if(isset($_GET["id"])) {
     $stockItemID = 0;
 }
 ?>
-<h3>Product <?php print($stockItemID)?></h3>
-
+<!--<h3>Product --><?php //print($stockItemID)?><!--</h3>-->
+<div class="plekbuttonwinkelmand">
 <form method="post">
     <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
-    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+    <input type="submit" name="submit" value="Voeg toe aan winkelmandje" class="toevoegwinkelmandbutton"  >
 </form>
-
+</div>
 <?php
 if(isset($_POST["submit"])){
     $stockItemID = $_POST["id"];
