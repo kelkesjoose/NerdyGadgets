@@ -192,48 +192,24 @@ if ($R) {
             <div class="col-sm-12">
                 <h1>Plaats review:</h1>
                 <form method="post" action="reviewform.php">
-                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
-                    <div class="PaddingToelichtingReview">
-                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview"> </textarea>
+                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" required> <br><br>
+                    <div class="paddingstar">
+                        <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
                     </div>
-                    <!-- <div class="rating">
-                        <input type="radio" name="star1" id="star1"><label for="star1">
-                        </label>
-                        <input type="radio" name="star2" id="star2"><label for="star2">
-                        </label>
-                        <input type="radio" name="star3" id="star3"><label for="star3">
-                        </label>
-                        <input type="radio" name="star4" id="star4"><label for="star4">
-                        </label>
-                        <input type="radio" name="star5" id="star5"><label for="star5">
-                        </label>
-                    </div> -->
-
+                    <div class="colorslider"></div>
                     <div class="slider">
-                        <input type="range" min="1" max="5" id="star" name="star" value="3">
-                        <div id="Selector">
-                            <div class="SelectBtn"></div>
-                            <div id="SelectValue"></div>
-                        </div>
-                        <div id="ProgressBar"></div>
+                        <input type="range" min="1" max="5" name="star" >
                     </div>
-
-                    <script>
-                        var slider = document.getElementById("star");
-                        var selector = document.getElementById("selector");
-                        var SelectValue = document.getElementById("SelectValue");
-                        var ProgressBar = document.getElementById("ProgressBar");
-
-                        SelectValue.innerHTML = slider.value;
-
-                        slider.oninput = function(){
-                            SelectValue.innerHTML = this.value;
-                            selector.style.left = this.value + "%";
-                            ProgressBar.style.width = this.value + "%";
-                        }
-                    </script>
-
-
+                    <div class="PaddingToelichtingReview">
+                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" > </textarea>
+                    </div>
+                    <?php
+                    print_r($_POST); ?>
+                    <input type="hidden" id="id" name="id" value=<?php print $stockItemID; ?>>
                     <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
                 </form>
             </div>
@@ -243,59 +219,8 @@ if ($R) {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
-
-
 <br>
 
 <?php
-
-
-
-$star = 0;
-$date = getdate();
-$ReviewID = "";
-
-foreach ($date as $time => $rv) {
-if ($time == "mday") {
-$day = $date["mday"];
-}
-if ($time == "mon") {
-$month = $date["mon"];
-}
-if ($time == "year") {
-$year = $date["year"];
-break;
-}
-}
-
-$ReviewDatum = "$year-$month-$day";
-print $ReviewDatum;
-
+$Query = "SELECT * FROM reviewproduct WHERE stockItemID = $stockItemID"
 ?>
-
-<?php
-$Query = "
-INSERT INTO reviewproduct
-VALUES (?, ?, ?, ?, ?)";
-
-// $Statement = mysqli_prepare($Connection, $Query);
-// mysqli_stmt_bind_param($Statement, "issis", $ReviewID, $_POST[OnderwerpReview],$_POST[ToelichtingReview],$star,$ReviewDatum);
-// mysqli_stmt_execute($Statement);
-// $R = mysqli_stmt_get_result($Statement);
-// ?>
-<br>
-
-    <!-- <div class="rating">
-        <input type="radio" name="star1" id="star1"><label for="star1">
-        </label>
-        <input type="radio" name="star2" id="star2"><label for="star2">
-        </label>
-        <input type="radio" name="star3" id="star3"><label for="star3">
-        </label>
-        <input type="radio" name="star4" id="star4"><label for="star4">
-        </label>
-        <input type="radio" name="star5" id="star5"><label for="star5">
-        </label>
-    </div> -->
-
-
