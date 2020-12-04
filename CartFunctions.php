@@ -10,13 +10,13 @@ function GetCart()
     return $cart;
 }
 
-function AddProductToCart($stockItemID)
+function AddProductToCart($stockItemID, $stockItemAantal)
 {
     $cart = GetCart();
     if (array_key_exists($stockItemID, $cart)) {
-        $cart[$stockItemID] += 1;
+        $cart[$stockItemID] += $stockItemAantal;
     } else {
-        $cart[$stockItemID] = 1;
+        $cart[$stockItemID] = $stockItemAantal;
     }
     SaveCart($cart);
 }

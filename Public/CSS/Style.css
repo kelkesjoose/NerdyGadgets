@@ -618,7 +618,6 @@ padding-left: 70px;
 }
 
 
-<<<<<<< HEAD
 /* .slider {
     width: 60%;
     margin: 24% auto;
@@ -651,17 +650,11 @@ padding-left: 70px;
     transform: translateX(-50%);
     z-index: 2;
 }
-=======
-.slider {
-    width: 20%;
-    position: relative;}
->>>>>>> 2eaea05ed9f3c44536455075a72147050fd4c7c1
 
 .colorslider{
     fill:#676EFF;
 }
 
-<<<<<<< HEAD
 #SelectValue {
     width: 48px;
     height: 40px;
@@ -698,14 +691,10 @@ padding-left: 70px;
 
 
  */
-=======
->>>>>>> 2eaea05ed9f3c44536455075a72147050fd4c7c1
-
          #paddingstar {
              margin-right: 10px;
              width: 40px;
              height: 40px;
              box-sizing: border-box;
-             filter:
          }
 

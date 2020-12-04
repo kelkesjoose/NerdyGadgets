@@ -5,23 +5,18 @@ include __DIR__ . "/header.php";
 include "CartFunctions.php";
 
 
-if(isset($_GET["id"])) {
+if (isset($_GET["id"])) {
     $stockItemID = $_GET["id"];
-}else{
+} else {
     $stockItemID = 0;
 }
 ?>
-<!--<h3>Product --><?php //print($stockItemID)?><!--</h3>-->
-<div class="plekbuttonwinkelmand">
-<form method="post">
-    <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
-    <input type="submit" name="submit" value="Voeg toe aan winkelmandje" class="toevoegwinkelmandbutton"  >
-</form>
-</div>
+<h3>Product <?php print($stockItemID) ?></h3
 <?php
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $stockItemID = $_POST["id"];
-    AddProductToCart($stockItemID);
+    $stockItemQuantity = $_POST["aantal"];
+    AddProductToCart($stockItemID, $stockItemQuantity);
     print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
 }
 
@@ -42,7 +37,7 @@ $Query = "
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "ii",$ShowStockLevel, $_GET['id']);
+mysqli_stmt_bind_param($Statement, "ii", $ShowStockLevel, $_GET['id']);
 mysqli_stmt_execute($Statement);
 $ReturnableResult = mysqli_stmt_get_result($Statement);
 if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
@@ -69,10 +64,10 @@ if ($R) {
 <div id="CenteredContent">
     <?php
     if ($Result != null) {
-        ?>
+    ?>
         <?php
         if (isset($Result['Video'])) {
-            ?>
+        ?>
             <div id="VideoFrame">
                 <?php print $Result['Video']; ?>
             </div>
@@ -85,27 +80,25 @@ if ($R) {
             if (isset($Images)) {
                 // print Single
                 if (count($Images) == 1) {
-                    ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
-                    <?php
+            ?>
+                    <div id="ImageFrame" style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                <?php
                 } else if (count($Images) >= 2) { ?>
                     <div id="ImageFrame">
                         <div id="ImageCarousel" class="carousel slide" data-interval="false">
                             <!-- Indicators -->
                             <ul class="carousel-indicators">
                                 <?php for ($i = 0; $i < count($Images); $i++) {
-                                    ?>
-                                    <li data-target="#ImageCarousel"
-                                        data-slide-to="<?php print $i ?>" <?php print (($i == 0) ? 'class="active"' : ''); ?>></li>
-                                    <?php
+                                ?>
+                                    <li data-target="#ImageCarousel" data-slide-to="<?php print $i ?>" <?php print(($i == 0) ? 'class="active"' : ''); ?>></li>
+                                <?php
                                 } ?>
                             </ul>
 
                             <!-- The slideshow -->
                             <div class="carousel-inner">
                                 <?php for ($i = 0; $i < count($Images); $i++) {
-                                    ?>
+                                ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
                                         <img src="Public/StockItemIMG/<?php print $Images[$i]['ImagePath'] ?>">
                                     </div>
@@ -121,13 +114,12 @@ if ($R) {
                             </a>
                         </div>
                     </div>
-                    <?php
+                <?php
                 }
             } else {
                 ?>
-                <div id="ImageFrame"
-                     style="background-image: url('Public/StockGroupIMG/<?php print $Result['BackupImagePath']; ?>'); background-size: cover;"></div>
-                <?php
+                <div id="ImageFrame" style="background-image: url('Public/StockGroupIMG/<?php print $Result['BackupImagePath']; ?>'); background-size: cover;"></div>
+            <?php
             }
             ?>
 
@@ -147,6 +139,15 @@ if ($R) {
             </div>
         </div>
 
+        <form class="inline" method="post">
+            <input type="number" name="id" value="<?php print $_GET["id"];?>" hidden>
+            <div class="form-group mb-2">
+                <label>Aantal:</label>
+                <input type="number" class="form-control" name="aantal" value="1" min="1" max="100" required>
+            </div>
+                <input type="submit" class="btn btn-primary mb-2" name="submit" value="Voeg toe aan winkelmandje">
+        </form>
+
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
@@ -157,35 +158,35 @@ if ($R) {
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
                 <table>
-                <thead>
-                <th>Naam</th>
-                <th>Data</th>
-                </thead>
-                <?php
-                foreach ($CustomFields as $SpecName => $SpecText) { ?>
-                    <tr>
-                        <td>
-                            <?php print $SpecName; ?>
-                        </td>
-                        <td>
-                            <?php
-                            if (is_array($SpecText)) {
-                                foreach ($SpecText as $SubText) {
-                                    print $SubText . " ";
+                    <thead>
+                        <th>Naam</th>
+                        <th>Data</th>
+                    </thead>
+                    <?php
+                    foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                        <tr>
+                            <td>
+                                <?php print $SpecName; ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (is_array($SpecText)) {
+                                    foreach ($SpecText as $SubText) {
+                                        print $SubText . " ";
+                                    }
+                                } else {
+                                    print $SpecText;
                                 }
-                            } else {
-                                print $SpecText;
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
+                                ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </table><?php
-            } else { ?>
+                    } else { ?>
 
                 <p><?php print $Result['CustomFields']; ?>.</p>
-                <?php
-            }
+            <?php
+                    }
             ?>
         </div>
         <div>
@@ -253,4 +254,3 @@ if ($R) {
     } ?>
 </>
 <br>
-

@@ -41,29 +41,25 @@ if (isset($_GET['page_number'])) {
 $AmountOfPages = 0;
 $queryBuildResult = "";
 switch ($SortOnPage) {
-    case "price_high_low":
-    {
-        $Sort = "SellPrice DESC";
-        break;
-    }
-    case "name_low_high":
-    {
-        $Sort = "StockItemName";
-        break;
-    }
+    case "price_high_low": {
+            $Sort = "SellPrice DESC";
+            break;
+        }
+    case "name_low_high": {
+            $Sort = "StockItemName";
+            break;
+        }
     case "name_high_low";
         $Sort = "StockItemName DESC";
         break;
-    case "price_low_high":
-    {
-        $Sort = "SellPrice";
-        break;
-    }
-    default:
-    {
-        $Sort = "SellPrice";
-        $SortName = "price_low_high";
-    }
+    case "price_low_high": {
+            $Sort = "SellPrice";
+            break;
+        }
+    default: {
+            $Sort = "SellPrice";
+            $SortName = "price_low_high";
+        }
 }
 $searchValues = explode(" ", $SearchString);
 
@@ -162,61 +158,60 @@ if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);
 }
 
-if(isset($_POST["id"])) {
+if (isset($_POST["id"])) {
     $stockItemID = $_POST["id"];
-}else{
+} else {
     $stockItemID = 0;
 }
 
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $stockItemID = $_POST["id"];
-    AddProductToCart($stockItemID);
+    $stockItemAantal = $_POST["aantal"];
+    AddProductToCart($stockItemID, $stockItemAantal);
     print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
 }
 
 ?>
-<div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
+<div id="FilterFrame">
+    <h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
     <form>
         <div id="FilterOptions">
             <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Zoeken</h4>
-            <input type="text" name="search_string" id="search_string"
-                   value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
-                   class="form-submit">
+            <input type="text" name="search_string" id="search_string" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit">
             <h4 class="FilterTopMargin"><i class="fas fa-list-ol"></i> Aantal producten op pagina</h4>
 
-            <input type="hidden" name="category_id" id="category_id"
-                   value="<?php print (isset($_GET['category_id'])) ? $_GET['category_id'] : ""; ?>">
+            <input type="hidden" name="category_id" id="category_id" value="<?php print (isset($_GET['category_id'])) ? $_GET['category_id'] : ""; ?>">
             <select name="products_on_page" id="products_on_page" onchange="this.form.submit()">>
                 <option value="25" <?php if ($_SESSION['products_on_page'] == 25) {
-                    print "selected";
-                } ?>>25
+                                        print "selected";
+                                    } ?>>25
                 </option>
                 <option value="50" <?php if ($_SESSION['products_on_page'] == 50) {
-                    print "selected";
-                } ?>>50
+                                        print "selected";
+                                    } ?>>50
                 </option>
                 <option value="75" <?php if ($_SESSION['products_on_page'] == 75) {
-                    print "selected";
-                } ?>>75
+                                        print "selected";
+                                    } ?>>75
                 </option>
             </select>
             <h4 class="FilterTopMargin"><i class="fas fa-sort"></i> Sorteren</h4>
             <select name="sort" id="sort" onchange="this.form.submit()">>
                 <option value="price_low_high" <?php if ($_SESSION['sort'] == "price_low_high") {
-                    print "selected";
-                } ?>>Prijs oplopend
+                                                    print "selected";
+                                                } ?>>Prijs oplopend
                 </option>
                 <option value="price_high_low" <?php if ($_SESSION['sort'] == "price_high_low") {
-                    print "selected";
-                } ?> >Prijs aflopend
+                                                    print "selected";
+                                                } ?>>Prijs aflopend
                 </option>
                 <option value="name_low_high" <?php if ($_SESSION['sort'] == "name_low_high") {
-                    print "selected";
-                } ?>>Naam oplopend
+                                                    print "selected";
+                                                } ?>>Naam oplopend
                 </option>
                 <option value="name_high_low" <?php if ($_SESSION['sort'] == "name_high_low") {
-                    print "selected";
-                } ?>>Naam aflopend
+                                                    print "selected";
+                                                } ?>>Naam aflopend
                 </option>
             </select>
             <h5 class="FilterTopMargin">De verzendkosten zijn vanaf <br>€ 25.00 gratis!</h5>
@@ -227,16 +222,14 @@ if(isset($_POST["submit"])){
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
         foreach ($ReturnableResult as $row) {
-            ?>
+    ?>
             <a class="ListItem" href='view.php?id=<?php print $row['StockItemID']; ?>'>
                 <div id="ProductFrame">
                     <?php
                     if (isset($row['ImagePath'])) { ?>
-                        <div class="ImgFrame"
-                             style="background-image: url('<?php print "Public/StockItemIMG/" . $row['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: center;"></div>
+                        <div class="ImgFrame" style="background-image: url('<?php print "Public/StockItemIMG/" . $row['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php } else if (isset($row['BackupImagePath'])) { ?>
-                        <div class="ImgFrame"
-                             style="background-image: url('<?php print "Public/StockGroupIMG/" . $row['BackupImagePath'] ?>'); background-size: cover;"></div>
+                        <div class="ImgFrame" style="background-image: url('<?php print "Public/StockGroupIMG/" . $row['BackupImagePath'] ?>'); background-size: cover;"></div>
                     <?php }
                     ?>
 
@@ -251,50 +244,48 @@ if(isset($_POST["submit"])){
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?></h4>
                 </div>
-                <div>
-                <form method="post">
-                    <input type="number" name="id" value="<?php print $row["StockItemID"]?>" hidden >
-                    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
-                </form>
-                </div>
-                </a>
+                <form class="inline" method="post">
+                        <input type="number" name="id" value="<?php print $row["StockItemID"]; ?>" hidden>
+                        <div class="form-group mb-2">
+                            <label>Aantal:</label>
+                            <input type="number" class="form-control" value='1' name="aantal" min="1" max="100" required>
+                        </div>
+                        <input type="submit" class="btn btn-primary mb-2" name="submit" value="Voeg toe aan winkelmandje">
+                    </form>
+            </a>
         <?php } ?>
 
         <form id="PageSelector">
-            <input type="hidden" name="search_string" id="search_string"
-                   value="<?php if (isset($_GET['search_string'])) {
-                       print ($_GET['search_string']);
-                   } ?>">
+            <input type="hidden" name="search_string" id="search_string" value="<?php if (isset($_GET['search_string'])) {
+                                                                                    print($_GET['search_string']);
+                                                                                } ?>">
             <input type="hidden" name="category_id" id="category_id" value="<?php if (isset($_GET['category_id'])) {
-                print ($_GET['category_id']);
-            } ?>">
-            <input type="hidden" name="result_page_numbers" id="result_page_numbers"
-                   value="<?php print (isset($_GET['result_page_numbers'])) ? $_GET['result_page_numbers'] : "0"; ?>">
-            <input type="hidden" name="products_on_page" id="products_on_page"
-                   value="<?php print ($_SESSION['products_on_page']); ?>">
-            <input type="hidden" name="sort" id="sort" value="<?php print ($_SESSION['sort']); ?>">
+                                                                                print($_GET['category_id']);
+                                                                            } ?>">
+            <input type="hidden" name="result_page_numbers" id="result_page_numbers" value="<?php print (isset($_GET['result_page_numbers'])) ? $_GET['result_page_numbers'] : "0"; ?>">
+            <input type="hidden" name="products_on_page" id="products_on_page" value="<?php print($_SESSION['products_on_page']); ?>">
+            <input type="hidden" name="sort" id="sort" value="<?php print($_SESSION['sort']); ?>">
 
             <?php
             if ($AmountOfPages > 0) {
                 for ($i = 1; $i <= $AmountOfPages; $i++) {
                     if ($PageNumber == ($i - 1)) {
-                        ?>
+            ?>
                         <div id="SelectedPage"><?php print $i; ?></div><?php
-                    } else { ?>
-                        <button id="page_number" class="PageNumber" value="<?php print($i - 1); ?>" type="submit"
-                                name="page_number"><?php print($i); ?></button>
-                    <?php }
-                }
-            }
+                                                                    } else { ?>
+                        <button id="page_number" class="PageNumber" value="<?php print($i - 1); ?>" type="submit" name="page_number"><?php print($i); ?></button>
+            <?php }
+                                                                }
+                                                            }
             ?>
         </form>
-        <?php
+    <?php
     } else {
-        ?>
+    ?>
         <h2 id="NoSearchResults">
             Yarr, er zijn geen resultaten gevonden.
         </h2>
-        <?php
+    <?php
     }
     ?>
 </div>

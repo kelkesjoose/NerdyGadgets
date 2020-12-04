@@ -1,11 +1,16 @@
 <?php
-include __DIR__ . "/header.php";
-include "CartFunctions.php";
+include 'header.php';
+include 'connect.php';?>
+<b>Welkom bij NerdyGadgets login pagina </b>
 
-?>
-<!DOCTYPE html>
-<html lang="en" style="background-color: rgb(35,35,47);">
+    </br></br></br>
+    <form method=POST action=" ">
+        Gebruikersnaam: <input name=username><br>
+        Wachtwoord:    &nbsp; &nbsp; &nbsp;<input type=password name=password><br><br>
+        <input type=submit value="Inloggen" name="submit"> <br>
+    Heb nog geen account! kun je hier registreren: <a  href="<?php echo 'reg.php'; ?>" style="left: 9px" > registreren </a>
 <head>
+
     <meta charset="ISO-8859-1">
     <title>NerdyGadgets</title>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
@@ -28,36 +33,31 @@ include "CartFunctions.php";
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="Public/Favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff"></head>
-<body>
-
-<h1>
-<br><br>
 
     <?php
-    $aantal=0;
-    $cart = GetCart();
 
-if(isset($_GET["submit"])){
-    print("Bedankt voor uw betaling!<br>");
-    print("<a href='index.php'> <h4>Ga terug naar de hoofdpagina.</h4> </a>");
-    foreach ($cart as $StockItemID => $aantal) {
-        $Query = " UPDATE Stockitemholdings
-            SET QuantityOnHand = QuantityOnHand - $aantal
-            WHERE StockItemID = $StockItemID";
-        $Statement = mysqli_prepare($Connection, $Query);
-        mysqli_stmt_execute($Statement);
-        $Result = mysqli_stmt_get_result($Statement);
+if(isset($_POST['submit'])){
+
+    $uname = mysqli_real_escape_string($Connection,$_POST['username']);
+    $password = mysqli_real_escape_string($Connection,$_POST['password']);
+
+    if ($uname != "" && $password != ""){
+
+        $sql_query = "select count(*) as cntUser from customersgegevens where username='".$uname."' and password='".$password."'";
+        $result = mysqli_query($Connection,$sql_query);
+        $row = mysqli_fetch_array($result);
+
+        $count = $row['cntUser'];
+
+        if($count > 0){
+            $_SESSION['username'] = $uname;
+            echo("<script>
+              location.replace('index.php')
+            </script>");
+        }else{
+            echo "Invalid username and password";
+        }
+
     }
-    session_destroy();
-} else {
-    print("Er is iets fout gegaan :( <br>");
-    print("<a href='checkout.php'> <h4>Ga terug naar de vorige pagina.</h4> </a>");
+
 }
-
-
-?>
-
-</h1>
-</body>
-</html>
-

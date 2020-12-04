@@ -25,7 +25,6 @@ $btwWaarde = 0;
 
                 foreach ($_SESSION["cart"] as $productnummer => $aantal) {
                     $teller++;
-
                     $query = "SELECT StockItemName, TaxRate, RecommendedRetailPrice, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
                      FROM StockItems
                      WHERE StockItemID = ?";
