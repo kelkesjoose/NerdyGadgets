@@ -58,11 +58,21 @@ $btwWaarde = 0;
                 $subtotalen = '';
 
                 $subtotalen .= "<tr><td>";
-                $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
+
 
                 print $subtotalen;
-                print'<td>';
-                print 'De verzendkosten zijn al in de prijs opgenomen!';
+                if ($totaalPrijs >= 25.00){
+                    print"De verzendkosten zijn gratis";
+                    print"<td>";
+                    print"<td>";
+                    print"Totaal prijs: <br>" . round(($totaalPrijs), 2);
+                } else {
+                    print"De verzendkosten zijn 4.95 <br>";
+                    print"<td>";
+                    print"<td>";
+                    print "Totaal prijs: " . round(($subtotalen = $totaalPrijs + 4.95), 2);
+                    $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
+                }
                 print '</td>';
 
                 echo "<tr><td></td><td></td><td></td><td><a href='order.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";

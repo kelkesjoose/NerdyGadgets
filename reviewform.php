@@ -1,42 +1,47 @@
 <?php
 include __DIR__ . "/header.php";
+
+$date = getdate();
+$ReviewID = "";
+$ToelichtingReview = "";
+
+foreach ($date as $time => $rv) {
+if ($time == "mday") {
+$day = $date["mday"];
+}
+if ($time == "mon") {
+$month = $date["mon"];
+}
+if ($time == "year") {
+$year = $date["year"];
+break;
+}
+}
+
+$ReviewDatum = "$year-$month-$day";
 ?>
 
-<!DOCTYPE html>
-<html lang="en" style="background-color: rgb(35,35,47);">
-<head>
-    <meta charset="UTF-8">
-    <title> Review pagina </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css
-    /font-awesome.min.css">
-</head>
+<html>
+    <body>
+        <h1 align="center">
+        <br>
+        <?php
+        if(ISSET($_POST["Verstuur"])) {
+            print ("Bedankt voor uw review!");
 
-<body>
-<h1>Plaats review:</h1>
+            $Query = "
+            INSERT INTO reviewproduct
+            VALUES (?, ?, ?, ?, ?, ?)";
 
-</form>
-<br>
-<form method="get" action="reviewform.php">
-    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" > <br><br>
-
-    <div class="rating">
-        <input type="radio" name="star" id="star1"><label for="star1">
-        </label>
-        <input type="radio" name="star" id="star2"><label for="star2">
-        </label>
-        <input type="radio" name="star" id="star3"><label for="star3">
-        </label>
-        <input type="radio" name="star" id="star4"><label for="star4">
-        </label>
-        <input type="radio" name="star" id="star5"><label for="star5">
-        </label>
-    </div>
-<br>
-<br>
-<br>
-
-    <div class="PaddingToelichtingReview">
-        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" class="ToelichtingReview"> </textarea>
-    </div>
-    <input type="submit" value="Verstuur" name="Verstuur!" class="betaalbutton">
-</body>
+            $Statement = mysqli_prepare($Connection, $Query);
+            mysqli_stmt_bind_param($Statement, "issisi", $ReviewID, $_POST['OnderwerpReview'],$_POST['ToelichtingReview'],$_POST['star'],$ReviewDatum,$_POST["id"]);
+            mysqli_stmt_execute($Statement);
+            $R = mysqli_stmt_get_result($Statement);
+            $id = $_POST["id"];
+            }
+        ?>
+        <br>
+        <a href="view.php?id=<?php print $id; ?>"> Ga terug naar de vorige pagina </a>
+        </h1>
+    </body>
+</html>

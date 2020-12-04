@@ -11,8 +11,18 @@ if (isset($_GET["id"])) {
     $stockItemID = 0;
 }
 ?>
+<<<<<<< HEAD
 <h3>Product <?php print($stockItemID) ?></h3>
 
+=======
+<!--<h3>Product --><?php //print($stockItemID)?><!--</h3>-->
+<div class="plekbuttonwinkelmand">
+<form method="post">
+    <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
+    <input type="submit" name="submit" value="Voeg toe aan winkelmandje" class="toevoegwinkelmandbutton"  >
+</form>
+</div>
+>>>>>>> 8cab306c9738ccc8e328f53c5d6fb52d487a4662
 <?php
 if (isset($_POST["submit"])) {
     $stockItemID = $_POST["id"];
@@ -190,8 +200,68 @@ if ($R) {
                     }
             ?>
         </div>
-    <?php
-    } else {
-    ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
-                                                                            } ?>
-</div>
+        <div>
+            <div class="col-sm-12">
+                <h1>Plaats review:</h1>
+                <form method="post" action="reviewform.php">
+                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" required> <br><br>
+                    <div class="paddingstar">
+                        <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+                    </div>
+                        <div class="slider">
+                        <input type="range" min="1" max="5" name="star">
+                        </div>
+                    <div class="PaddingToelichtingReview">
+                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" > </textarea>
+                    </div>
+                    <input type="hidden" id="id" name="id" value=<?php print $stockItemID; ?>>
+                    <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="postreview"></div>
+        <br>
+        <h3> Geplaatste reviews: </h3> <br>
+        <div class="postreview"></div>
+        <br>
+        <?php
+        $Query = "SELECT * FROM reviewproduct WHERE stockItemID = (?)";
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $stockItemID);
+        mysqli_stmt_execute($Statement);
+        $Uitkomst = mysqli_stmt_get_result($Statement);
+        $Uitkomst = mysqli_fetch_all($Uitkomst, MYSQLI_ASSOC);
+        foreach($Uitkomst as $Review){
+            print("<p> Aantal sterren gegeven: ");
+            for($i=0;$i < $Review['AantalSter']; $i++){
+                print("<img src='public/img/Star3.png' width='40px' height='40px' id='paddingstar'>");
+            }
+
+            print("</p><h5>");
+            print("Onderwerp: <br></h5>");
+            print("<p>" . $Review['OnderwerpReview'] . "<br></p>");
+            print("<h5>Toelichting: </h5>");
+            print($Review['ToelichtingReview']);
+            print("</h5>");
+            print("<p><br> Datum:  "); print($Review['ReviewDatum'] . "</p>");
+
+            print("<div class='postreview'></div>");
+
+
+//            if($Onderwerpen = 'OnderwerpReview'){
+//                $OnderwerpReview = $Uitkomst['OnderwerpReview'];
+//                print($OnderwerpReview);
+//            }
+        }
+        } else {
+        ?></h5>
+        <h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
+    } ?>
+</>
+<br>
