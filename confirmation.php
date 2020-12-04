@@ -30,7 +30,7 @@ include "CartFunctions.php";
     <meta name="theme-color" content="#ffffff"></head>
 <body>
 
-<h1 align="center" >
+<h1>
 <br><br>
 
     <?php

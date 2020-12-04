@@ -23,7 +23,7 @@ $ReviewDatum = "$year-$month-$day";
 
 <html>
     <body>
-        <h1 align="center">
+        <h1>
         <br>
         <?php
         if(ISSET($_POST["Verstuur"])) {

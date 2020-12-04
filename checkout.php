@@ -13,7 +13,7 @@ include __DIR__ . "/header.php";
     <h2>Druk op de knop om te betalen!</h2>
     <br>
     <form method="get" action="confirmation.php">
-        <input type="submit" value="Betalen!" name="submit" class="betaalbutton" align="center"><br>
+        <input type="submit" value="Betalen!" name="submit" class="betaalbutton"><br>
     </form>
 
 </div>

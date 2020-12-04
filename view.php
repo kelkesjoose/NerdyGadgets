@@ -11,18 +11,7 @@ if (isset($_GET["id"])) {
     $stockItemID = 0;
 }
 ?>
-<<<<<<< HEAD
-<h3>Product <?php print($stockItemID) ?></h3>
-
-=======
-<!--<h3>Product --><?php //print($stockItemID)?><!--</h3>-->
-<div class="plekbuttonwinkelmand">
-<form method="post">
-    <input type="number" name="id" value="<?php print($stockItemID)?>" hidden >
-    <input type="submit" name="submit" value="Voeg toe aan winkelmandje" class="toevoegwinkelmandbutton"  >
-</form>
-</div>
->>>>>>> 8cab306c9738ccc8e328f53c5d6fb52d487a4662
+<h3>Product <?php print($stockItemID) ?></h3
 <?php
 if (isset($_POST["submit"])) {
     $stockItemID = $_POST["id"];
