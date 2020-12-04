@@ -60,6 +60,7 @@ include 'connect.php';?>
 
 if (isset($_POST['regsubmit'])) {
     print_r($_POST);
+    $userID;
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
@@ -67,10 +68,10 @@ if (isset($_POST['regsubmit'])) {
     $user = $_POST['registerusername'];
 
     $pass = $_POST['registerpassword'];
-    $query = "INSERT INTO customersgegevens(firstname, lastname, email, dob, username, password) VALUES(?,?,?,?,?,?)";
+    $query = "INSERT INTO customersgegevens(user_id, firstname, lastname, email, dob, username, password) VALUES(?,?,?,?,?,?,?)";
 
     $statement = mysqli_prepare($Connection, $query);
-    mysqli_stmt_bind_param($statement, 'sissss', $firstname, $lastname, $email, $dob, $user, $pass);
+    mysqli_stmt_bind_param($statement, 'issssss', $userID, $firstname, $lastname, $email, $dob, $user, $pass);
     mysqli_stmt_execute($statement);
 
     $result = mysqli_stmt_get_result($statement);
