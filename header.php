@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+$_SESSION['ingelogd'] = true;
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -66,16 +67,20 @@ include "connect.php";
                     <li>
                         <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
                            class="HrefDecoration"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
-                    </li>
-                    <?php
-                }
-                ?>
+                    </li><?php } ?>
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
                 <li>
                     <a href="cart.php" class="HrefDecoration">Winkelwagen</a>
-                </li>
+                </li>   
+                <?php if(isset($_SESSION['username'])){
+                    print "<li>". $_SESSION['username'] . "</li>";
+                    print "<li><a href='logout.php'>logout</a></li>";
+                }else{
+                    echo "<li><a href='inlog.php'>login</a></li>";
+                };
+                ?>
             </ul>
         </div>
         <ul id="ul-class-navigation">
