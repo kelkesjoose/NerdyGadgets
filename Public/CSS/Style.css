@@ -203,14 +203,16 @@ ul#ul-class-navigation li {
     float: left;
     padding: 10px;
     margin-top:10px;
+    margin-right:10px;
     border: 1px solid;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
+
 #StockItemSpecifications {
     background-color: rgba(35, 40, 47, 0.8);
     width: 49%;
-    float: left;
+    float: right;
     padding: 10px;
     margin-left: 1%;
     margin-top:10px;
@@ -697,4 +699,3 @@ padding-left: 70px;
              height: 40px;
              box-sizing: border-box;
          }
-
