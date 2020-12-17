@@ -20,20 +20,26 @@ if (isset($_POST["submit"])) {
     print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
 }
 
-$Query = " 
-           SELECT SI.StockItemID,
-            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+$tempquery = "
+          SELECT Temperature FROM coldroomtemperatures WHERE ColdRoomSensorNumber = 5";
+
+$Query = "
+           SELECT SI.StockItemID, IsChillerStock,
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice,
             StockItemName,
             (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
-            SearchDetails, 
+            SearchDetails,
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
-            FROM stockitems SI 
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath
+            FROM stockitems SI
             JOIN stockitemholdings SIH USING(stockitemid)
             JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
             JOIN stockgroups USING(StockGroupID)
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
+
+$koelquery = "
+          SELECT StockItemID FROM stockitems WHERE IsChillerStock = 1";
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
@@ -45,10 +51,25 @@ if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
 } else {
     $Result = null;
 }
+
+$koelstatement = mysqli_prepare($Connection, $koelquery);
+mysqli_stmt_execute($koelstatement);
+$koelres = mysqli_stmt_get_result($koelstatement);
+$koelres = mysqli_fetch_all($koelres, MYSQLI_ASSOC);
+
+$tempstatement = mysqli_prepare($Connection, $tempquery);
+mysqli_stmt_execute($tempstatement);
+$Ret = mysqli_stmt_get_result($tempstatement);
+$Ret = mysqli_fetch_all($Ret, MYSQLI_ASSOC);
+
+
+
+
+
 //Get Images
 $Query = "
                 SELECT ImagePath
-                FROM stockitemimages 
+                FROM stockitemimages
                 WHERE StockItemID = ?";
 
 $Statement = mysqli_prepare($Connection, $Query);
@@ -151,7 +172,17 @@ if ($R) {
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
-        </div>
+        <br><br><br><br><br><br><br></div>
+
+        <div id="StockItemSpecifications">
+          <h3>Koelkamer Temperatuur</h3>
+          <p><?php if ($stockItemID == $koelres[0]['StockItemID'] | $stockItemID == $koelres[1]['StockItemID'] | $stockItemID == $koelres[2]['StockItemID'] | $stockItemID == $koelres[3]['StockItemID'] | $stockItemID == $koelres[4]['StockItemID'] | $stockItemID == $koelres[5]['StockItemID'] | $stockItemID == $koelres[6]['StockItemID'] | $stockItemID == $koelres[7]['StockItemID']){
+          print_r ("De temperatuur van de koelkamer is: " . $Ret[0]['Temperature'] . " °C");
+          } else {
+            print ("Dit product is niet gekoeld!");
+          } ?></p></div>
+
+
         <div id="StockItemSpecifications">
             <h3>Artikel specificaties</h3>
             <?php
@@ -189,6 +220,7 @@ if ($R) {
                     }
             ?>
         </div>
+
         <div>
             <div class="col-sm-12">
                 <h1>Plaats review:</h1>
