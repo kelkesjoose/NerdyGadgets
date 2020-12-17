@@ -192,24 +192,34 @@ if ($R) {
         <div>
             <div class="col-sm-12">
                 <h1>Plaats review:</h1>
-                <form method="post" action="reviewform.php">
-                    Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" required> <br><br>
-                    <div class="paddingstar">
-                        <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
-                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
-                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
-                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
-                    <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
-                    </div>
-                        <div class="slider">
-                        <input type="range" min="1" max="5" name="star">
-                        </div>
-                    <div class="PaddingToelichtingReview">
-                        Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" > </textarea>
-                    </div>
-                    <input type="hidden" id="id" name="id" value=<?php print $stockItemID; ?>>
-                    <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
-                </form>
+                <?php
+if(isset($_SESSION['username'])){
+    ?>
+            <form method="post" action="reviewform.php">
+            Naam: <input type="text" name="OnderwerpReview" placeholder="Onderwerp" class="TextVeldReview" required> <br><br>
+            <div class="paddingstar">
+                <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+            <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+            <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+            <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+            <img src="public/img/Star3.png" width="40px" height="40px" id="paddingstar">
+            </div>
+                <div class="slider">
+                <input type="range" min="1" max="5" name="star">
+                </div>
+            <div class="PaddingToelichtingReview">
+                Toelichting:<br><textarea rows="5" cols="70" placeholder="Vul hier uw toelichting in" name="ToelichtingReview" class="ToelichtingReview" > </textarea>
+            </div>
+            <input type="hidden" id="id" name="id" value=<?php print $stockItemID; ?>>
+            <input type="submit" value="Verstuur!" name="Verstuur" class="betaalbutton">
+        </form>
+    <?php
+    } else {
+        ?>
+        <h2>Je moet ingelogd zijn om een review te kunnen plaatsen!</h2>
+        <?php
+    }
+?>
             </div>
         </div>
         <br>
